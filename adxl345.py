@@ -66,13 +66,21 @@ class ADXL345:
 
     # set the measurement range for 10-bit readings
     def setRange(self, range_flag):
-        value = bus.read_byte_data(self.address, DATA_FORMAT)
+        try:
+            value = bus.read_byte_data(self.address, DATA_FORMAT)
+        except IOError:
+            subprocess.call(['i2cdetect' , '-y' , '1'])
+            flag = 1
 
         value &= ~0x0F;
         value |= range_flag;  
         value |= 0x08;
 
-        bus.write_byte_data(self.address, DATA_FORMAT, value)
+        try:
+            bus.write_byte_data(self.address, DATA_FORMAT, value)
+        except IOError:
+            subprocess.call(['i2cdetect' , '-y' , '1'])
+            flag = 1
     
     # returns the current reading from the sensor for each axis
     #
