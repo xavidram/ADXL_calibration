@@ -8,7 +8,7 @@
 #	License:		MIT  =>   https://tldrlegal.com/license/mit-license
 ####
 
-import adxl345
+from adxl345 import ADXL345
 import os
 import platform
 import time
