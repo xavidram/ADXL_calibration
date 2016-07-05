@@ -8,6 +8,7 @@
 # http://shop.pimoroni.com/products/adafruit-triple-axis-accelerometer
 
 import smbus
+import subprocess
 from time import sleep
 
 # select the correct i2c bus for this revision of Raspberry Pi
@@ -49,10 +50,19 @@ class ADXL345:
         self.enableMeasurement()
 
     def enableMeasurement(self):
-        bus.write_byte_data(self.address, POWER_CTL, MEASURE)
+        try:
+            bus.write_byte_data(self.address, POWER_CTL, MEASURE)
+        except IOError:
+            subprocess.call(['i2cdetect' , '-y' , '1'])
+            flag = 1
 
     def setBandwidthRate(self, rate_flag):
-        bus.write_byte_data(self.address, BW_RATE, rate_flag)
+        try:
+            bus.write_byte_data(self.address, BW_RATE, rate_flag)
+        except IOError:
+            subprocess.call(['i2cdetect' , '-y' , '1'])
+            flag = 1
+
 
     # set the measurement range for 10-bit readings
     def setRange(self, range_flag):
