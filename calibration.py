@@ -1,16 +1,42 @@
-import os, sys, adxl345
+####
+#	Author: Xavid Ramirez
+#	Email:	xavidram@hotmail.com
+#	Alt Email: xavid.ramirez01@utrgv.edu
+#	Script Summary:	This script will sample values
+#					from a vibration sensors at a 
+#					desired sampling fequency.
+#	License:		MIT  =>   https://tldrlegal.com/license/mit-license
+####
 
-class xyz:
-	x = 0
-	y = 0
-	z = 0
+import adxl345
+import os
+import platform
+import time
 
-	def __init__(self,x,y,z)
-		self.x = x
-		self.y = y
-		self.z = z
+#initialize adxl
+sensor = ADXL345()
 
-	def axis():
-		print "X:%d,Y:%d,Z:%d" % (x,y,z)
+# Function definitions:
+def cleanUp():
+	"""
+		Function:	cleanUp
+		Params:		NONE
+		Libraries:	os
+		Desc:		Detect which system is running the
+					script and run the os's clear command
+					to clear the screan.
+	"""
+	if 'Windows' in platform.system():
+		os.system('cls')
+	elif 'Linux' in platform.system():
+		os.system('clear')
+	elif 'OSX' in platform.system():
+		os.system('clear')
 
 
+cleanUp()
+axes = sensor.getAxes(True)
+print "ADXL345 on address 0x%x:" % (adxl345.address)
+print "   x = %.3fG" % ( axes['x'] )
+print "   y = %.3fG" % ( axes['y'] )
+print "   z = %.3fG" % ( axes['z'] )
