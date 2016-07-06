@@ -14,7 +14,7 @@ import platform
 import time
 
 #initialize adxl
-sensor = ADXL345()
+adxl345 = ADXL345()
 
 # Function definitions:
 def cleanUp():
@@ -35,8 +35,9 @@ def cleanUp():
 
 
 cleanUp()
-axes = sensor.getAxes(True)
+axes = adxl345.getAxes(True)
 print "ADXL345 on address 0x%x:" % (adxl345.address)
 print "   x = %.3fG" % ( axes['x'] )
 print "   y = %.3fG" % ( axes['y'] )
 print "   z = %.3fG" % ( axes['z'] )
+

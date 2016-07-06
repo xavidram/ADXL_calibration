@@ -6,9 +6,7 @@
 # This is a Raspberry Pi Python implementation to help you get started with
 # the Adafruit Triple Axis ADXL345 breakout board:
 # http://shop.pimoroni.com/products/adafruit-triple-axis-accelerometer
-
 import smbus
-import subprocess
 from time import sleep
 
 # select the correct i2c bus for this revision of Raspberry Pi
@@ -50,37 +48,20 @@ class ADXL345:
         self.enableMeasurement()
 
     def enableMeasurement(self):
-        try:
-            bus.write_byte_data(self.address, POWER_CTL, MEASURE)
-        except IOError:
-            subprocess.call(['i2cdetect' , '-y' , '1'])
-            flag = 1
+        bus.write_byte_data(self.address, POWER_CTL, MEASURE)
 
     def setBandwidthRate(self, rate_flag):
-        try:
-            bus.write_byte_data(self.address, BW_RATE, rate_flag)
-        except IOError:
-            subprocess.call(['i2cdetect' , '-y' , '1'])
-            flag = 1
-
+        bus.write_byte_data(self.address, BW_RATE, rate_flag)
 
     # set the measurement range for 10-bit readings
     def setRange(self, range_flag):
-        try:
-            value = bus.read_byte_data(self.address, DATA_FORMAT)
-        except IOError:
-            subprocess.call(['i2cdetect' , '-y' , '1'])
-            flag = 1
+        value = bus.read_byte_data(self.address, DATA_FORMAT)
 
         value &= ~0x0F;
         value |= range_flag;  
         value |= 0x08;
 
-        try:
-            bus.write_byte_data(self.address, DATA_FORMAT, value)
-        except IOError:
-            subprocess.call(['i2cdetect' , '-y' , '1'])
-            flag = 1
+        bus.write_byte_data(self.address, DATA_FORMAT, value)
     
     # returns the current reading from the sensor for each axis
     #
