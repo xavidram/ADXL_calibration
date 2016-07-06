@@ -49,7 +49,7 @@ def Calibrate1():
 		time.sleep(Frequency)
 
 	#write out the data
-	with open(Filename,'a') as textfile:
+	with open(FileName,'a') as textfile:
 		j = 0
 		while j < len(Timestamps):
 			print "%.4f \t %.3f \t %.3f \t %.3f" % ((time.time()-Timestart) , axes['x'] , axes['y'], axes['z'])
