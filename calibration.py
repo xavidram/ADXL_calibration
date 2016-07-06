@@ -52,7 +52,7 @@ def Calibrate1():
 	with open(FileName,'a') as textfile:
 		j = 0
 		while j < len(Timestamps):
-			print "%.4f \t %.3f \t %.3f \t %.3f" % ((time.time()-Timestart) , AxesList[j]['x'] , AxesList[j]['y'], AxesList[j]['z'])
+			print "%.4f \t %.3f \t %.3f \t %.3f" % ((Timestamps[j]) , AxesList[j]['x'] , AxesList[j]['y'], AxesList[j]['z'])
 			textfile.write(str(Timestamps[j]) + '\t' + str(AxesList[j]['x']) + '\t' + str(AxesList[j]['y']) + '\t' + str(AxesList[j]['z']) + '\n')
 			j += 1
 
