@@ -40,9 +40,10 @@ def cleanUp():
 def Calibrate1():
 	Timestart = time.time()
 	Duration = int(Runtime)
+	print "Time \t X-axis \t Y-axis \t Z-axis"
 	while (time.time() - Timestart) < Duration:
 		axes = adxl345.getAxes(True)
-		print "T: %.4fG \t X:%.3fG \t Y:%.3fG \t Z:%.3fG" % ((time.time()-Timestart) , axes['x'] , axes['y'], axes['z'])
+		print "%.4fG \t %.3fG \t %.3fG \t %.3fG" % ((time.time()-Timestart) , axes['x'] , axes['y'], axes['z'])
 		time.sleep(Frequency)
 
 cleanUp()
