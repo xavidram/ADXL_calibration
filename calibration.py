@@ -44,7 +44,7 @@ def Calibrate1():
 	Timestamps = []
 	AxesList = []
 	while (time.time() - Timestart) < Duration:
-		Timestamps = (time.time() - Timestart)
+		Timestamps.append(time.time() - Timestart)
 		AxesList.append(adxl345.getAxes(True))
 		time.sleep(Frequency)
 
