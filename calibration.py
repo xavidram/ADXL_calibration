@@ -42,7 +42,7 @@ def Calibrate1():
 	Duration = int(Runtime)
 	while (time.time() - Timestart) < Duration:
 		axes = adxl345.getAxes(True)
-		print "X:%.3fG \t Y:%.3fG \t Z:%.3fG"
+		print "T: %.4fG \t X:%.3fG \t Y:%.3fG \t Z:%.3fG" % ((time.time()-Timestart) , axes['x'] , axes['y'], axes['z'])
 		time.sleep(Frequency)
 
 cleanUp()
