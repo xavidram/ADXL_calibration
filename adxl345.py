@@ -9,6 +9,7 @@
 import smbus
 from time import sleep
 
+
 # select the correct i2c bus for this revision of Raspberry Pi
 revision = ([l[12:-1] for l in open('/proc/cpuinfo','r').readlines() if l[:8]=="Revision"]+['0000'])[0]
 bus = smbus.SMBus(1 if int(revision, 16) >= 4 else 0)
