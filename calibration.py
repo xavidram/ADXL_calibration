@@ -7,7 +7,6 @@
 #					desired sampling fequency.
 #	License:		MIT  =>   https://tldrlegal.com/license/mit-license
 ####
-
 from adxl345 import ADXL345
 import os
 import platform
