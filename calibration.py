@@ -49,7 +49,7 @@ def Calibrate1():
 		time.sleep(Frequency)
 
 	#write out the data
-	with open(FileName,'a') as textfile:
+	with open(FileName,'wb') as textfile:
 		j = 0
 		textfile.write("Timestamp \t X-Axis \t Y-Axis \t Z-Axis\n")
 		while j < len(Timestamps):
