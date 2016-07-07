@@ -40,6 +40,7 @@ def cleanUp():
 def Calibrate1():
 	Timestart = time.time()
 	Duration = int(Runtime)
+	print "Time \t X-axis \t Y-axis \t Z-axis"
 	Timestamps = []
 	AxesList = []
 	while (time.time() - Timestart) < Duration:
@@ -50,7 +51,7 @@ def Calibrate1():
 	#write out the data
 	with open(FileName,'a') as textfile:
 		j = 0
-		print "Time \t X-axis \t Y-axis \t Z-axis"
+		textfile.write("Timestamp \t X-Axis \t Y-Axis \t Z-Axis\n")
 		while j < len(Timestamps):
 			print "%.4f \t %.3f \t %.3f \t %.3f" % ((Timestamps[j]) , AxesList[j]['x'] , AxesList[j]['y'], AxesList[j]['z'])
 			textfile.write(str(Timestamps[j]) + '\t' + str(AxesList[j]['x']) + '\t' + str(AxesList[j]['y']) + '\t' + str(AxesList[j]['z']) + '\n')
