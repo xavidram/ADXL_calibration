@@ -59,9 +59,9 @@ def Calibrate1():
 
 def updateFileName():
 	if fileindex < 10:
-		FileName = 'Trial_0%d_%ds_%f.txt' % (fileindex,Runtime,Frequency)
+		FileName = 'Trial_0%d_%ds_%.4fhz.txt' % (fileindex,Runtime,Frequency)
 	elif fileindex >= 10:
-		FileName = 'Trial_%d_%ds_%f.txt' % (fileindex,Runtime,Frequency)
+		FileName = 'Trial_%d_%ds_%.4fhz.txt' % (fileindex,Runtime,Frequency)
 
 cleanUp()
 print " ---Vibration Sensor Collection---\n "
