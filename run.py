@@ -78,3 +78,4 @@ fileindex = 1
 
 while True:
 	Calibrate1()
+	fileindex += 1
